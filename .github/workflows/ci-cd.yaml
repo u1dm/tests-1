@@ -33,3 +33,15 @@ jobs:
       - name: Push Docker Image to Registry
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/test-1:latest
+    
+  deploy:
+    needs: build
+    runs-on: deploy-server
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup app
+        run: |
+          docker compose -f docker_compose.yaml pull
+          docker compose down 
+          docker compose -f docker_compose.yaml up -d
+          
