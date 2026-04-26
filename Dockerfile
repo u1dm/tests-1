@@ -8,6 +8,7 @@ WORKDIR /app
 COPY app.py .
 
 # Install any needed dependencies specified in requirements.txt
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 #PORT
