@@ -36,7 +36,7 @@ jobs:
     
   deploy:
     needs: build
-    runs-on: deploy-server
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
       - name: Setup app
